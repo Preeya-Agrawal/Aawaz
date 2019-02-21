@@ -21,6 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::match(['get','post'], '/admin','AdminController@index');
 Route::group(['middleware' =>['auth']],function(){
     Route::get('admin/dashboard','DashboardController@dashboard'); 
-    Route::get('admin/settings','AdminController@settings');  
+    Route::get('admin/settings','AdminController@settings'); 
+    
+    //category Route(admin)
+    Route::match(['get','post'], '/admin/add-category','CategoryController@addcategory');
+
 });
 Route::get('/logout','AdminController@logout');
